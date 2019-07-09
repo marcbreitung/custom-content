@@ -1,9 +1,10 @@
 [package]
 name = "custom-content"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Marc Breitung <info@marcbreitung.de>"]
 edition = "2018"
 description = "Build TYPO3 custom content elements"
 
 [dependencies]
 clap = "2.33"
+regex = "1"
