@@ -5,6 +5,8 @@ use crate::extension::conf::Conf;
 use crate::file::SaveFile;
 use crate::files::php::conf_file::ConfFile;
 use crate::files::php::plugin_file::PluginFile;
+use crate::files::php::sys_template_file::SysTemplateFile;
+use crate::files::php::pages_file::PagesFile;
 use crate::files::template_file::TemplateFile;
 use crate::files::typoscript::element_file::ElementFile;
 use crate::files::typoscript::elements_file::ElementsFile;
@@ -38,6 +40,12 @@ impl Extension {
     pub fn build(&self) {
         let conf_file = ConfFile::new(&self);
         self.save_as_file(&conf_file);
+
+        let sys_template_file = SysTemplateFile::new(&self);
+        self.save_as_file(&sys_template_file);
+
+        let pages_file = PagesFile::new(&self);
+        self.save_as_file(&pages_file);
 
         for element in &self.elements {
             let wizard_file = WizardFile::new(&element);
