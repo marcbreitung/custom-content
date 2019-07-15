@@ -18,7 +18,7 @@ impl<'a> SaveFile for PluginFile<'a> {
         let plugin = r"<?php
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
    array(
-      'LLL:EXT:${extension}/Resources/Private/Language/Tca.xlf:${pluginkey}',
+      'LLL:EXT:${extension}/Resources/Private/Language/${pluginkey}.xlf:${pluginkey}',
       '${pluginkey}',
       'EXT:${extension}/Resources/Public/Icons/ContentElements/${pluginkey}.gif'
    ),

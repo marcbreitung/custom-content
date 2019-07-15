@@ -3,12 +3,15 @@ use std::fs;
 use crate::element::element::Element;
 use crate::extension::conf::Conf;
 use crate::file::SaveFile;
-use crate::files::conf_file::ConfFile;
-use crate::files::plugin_file::PluginFile;
-use crate::files::typoscript_file::TyposcriptFile;
-use crate::files::wizard_file::WizardFile;
-use crate::key::Key;
+use crate::files::php::conf_file::ConfFile;
+use crate::files::php::plugin_file::PluginFile;
 use crate::files::template_file::TemplateFile;
+use crate::files::typoscript::element_file::ElementFile;
+use crate::files::typoscript::elements_file::ElementsFile;
+use crate::files::typoscript::wizard_file::WizardFile;
+use crate::files::typoscript::wizards_file::WizardsFile;
+use crate::key::Key;
+use crate::files::language_file::LanguageFile;
 
 #[derive(Debug)]
 pub struct Extension {
@@ -35,18 +38,28 @@ impl Extension {
     pub fn build(&self) {
         let conf_file = ConfFile::new(&self);
         self.save_as_file(&conf_file);
+
         for element in &self.elements {
             let wizard_file = WizardFile::new(&element);
             self.save_as_file(&wizard_file);
 
-            let typoscript_file = TyposcriptFile::new(&element);
-            self.save_as_file(&typoscript_file);
+            let wizards_file = WizardsFile::new(&element);
+            self.save_as_file(&wizards_file);
+
+            let typoscript_elements_file = ElementsFile::new(&element);
+            self.save_as_file(&typoscript_elements_file);
+
+            let typoscript_element_file = ElementFile::new(&element);
+            self.save_as_file(&typoscript_element_file);
 
             let plugin_file = PluginFile::new(&element);
             self.save_as_file(&plugin_file);
 
             let template_file = TemplateFile::new(&element);
             self.save_as_file(&template_file);
+
+            let language_file = LanguageFile::new(&element);
+            self.save_as_file(&language_file);
         }
     }
 

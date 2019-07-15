@@ -20,8 +20,8 @@ impl<'a> SaveFile for WizardFile<'a> {
    elements {
       ${pluginkey} {
          iconIdentifier = ${icon}
-         title = LLL:EXT:${extension}/Resources/Private/Language/Tca.xlf:${pluginkey}.wizard.title
-         description = LLL:EXT:${extension}/Resources/Private/Language/Tca.xlf:${pluginkey}.wizard.description
+         title = LLL:EXT:${extension}/Resources/Private/Language/${pluginkey}.xlf:${pluginkey}.wizard.title
+         description = LLL:EXT:${extension}/Resources/Private/Language/${pluginkey}.xlf:${pluginkey}.wizard.description
          tt_content_defValues {
             CType = ${pluginkey}
          }

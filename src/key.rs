@@ -1,7 +1,7 @@
 #[derive(Debug)]
 pub struct Key {
-    extension: String,
-    plugin: String,
+    pub extension: String,
+    pub plugin: String,
 }
 
 impl Key {
@@ -26,21 +26,5 @@ impl Key {
             .replace("-", "");
 
         format!("{}_{}", extension, plugin)
-    }
-
-    pub fn template_name(&self) -> String {
-        let plugin = self.plugin.clone()
-            .replace("_", "")
-            .replace("-", "");
-
-        self.uppercase_first_letter(&plugin)
-    }
-
-    fn uppercase_first_letter(&self, text: &str) -> String {
-        let mut c = text.chars();
-        match c.next() {
-            None => String::new(),
-            Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
-        }
     }
 }

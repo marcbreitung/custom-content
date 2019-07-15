@@ -1,5 +1,4 @@
-pub mod conf_file;
-pub mod wizard_file;
-pub mod typoscript_file;
-pub mod plugin_file;
+pub mod typoscript;
+pub mod php;
 pub mod template_file;
+pub mod language_file;
