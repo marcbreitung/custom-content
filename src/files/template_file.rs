@@ -26,6 +26,6 @@ impl<'a> SaveFile for TemplateFile<'a> {
     }
 
     fn file(&self) -> String {
-        format!("{}/Resources/Private/Templates/{}.html", self.element.key.extension_key(), self.element.key.plugin_key())
+        format!("{}/Resources/Private/Templates/{}.html", self.element.key.extension_key(), self.element.key.template_name())
     }
 }

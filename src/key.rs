@@ -7,8 +7,8 @@ pub struct Key {
 impl Key {
     pub fn new(extension: &str, plugin: &str) -> Self {
         Self {
-            extension: extension.to_string(),
-            plugin: plugin.to_string(),
+            extension: extension.to_string().to_lowercase(),
+            plugin: plugin.to_string().to_lowercase(),
         }
     }
 
@@ -26,5 +26,21 @@ impl Key {
             .replace("-", "");
 
         format!("{}_{}", extension, plugin)
+    }
+
+    pub fn template_name(&self) -> String {
+        let plugin = self.plugin.clone()
+            .replace("_", "")
+            .replace("-", "");
+
+        self.uppercase_first_letter(&plugin)
+    }
+
+    fn uppercase_first_letter(&self, text: &str) -> String {
+        let mut c = text.chars();
+        match c.next() {
+            None => String::new(),
+            Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+        }
     }
 }

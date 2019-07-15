@@ -19,10 +19,11 @@ impl<'a> SaveFile for TyposcriptFile<'a> {
         let plugin = r"tt_content {
    ${pluginkey} < lib.fluidContent
    ${pluginkey} {
-      templateName = NewContentElement.html
+      templateName = ${template}.html
    }
 }";
         plugin.replace("${pluginkey}", &self.element.key.plugin_key())
+            .replace("${template}", &self.element.key.template_name())
     }
 
     fn file(&self) -> String {
